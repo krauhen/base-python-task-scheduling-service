@@ -7,6 +7,31 @@ from src.celery_example.models import TrainModel, PredictModel
 app = FastAPI()
 
 
+@app.put("/data/add_data")
+async def add_data_endpoint(data, description: str):
+    pass
+
+
+@app.get("/data/get_data_ref")
+async def add_data_endpoint(data_ref: str):
+    pass
+
+
+@app.get("/data/get_data_refs")
+async def add_data_endpoint():
+    pass
+
+
+@app.delete("/data/remove_data")
+async def add_data_endpoint(data_ref: str):
+    pass
+
+
+@app.put("/data/update_data")
+async def add_data_endpoint(data_ref: str):
+    pass
+
+
 @app.get("/tasks/get_task_ids")
 async def get_task_ids_endpoint() -> List[str]:
     return await get_task_ids()

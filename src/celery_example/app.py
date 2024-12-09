@@ -1,5 +1,8 @@
+from typing import Union
+
 from fastapi import FastAPI
-from src.task_handler import *
+from src.celery_example.task_handler import *
+from src.celery_example.models import TrainModel, PredictModel
 
 app = FastAPI()
 
@@ -10,15 +13,15 @@ async def get_task_ids_endpoint() -> List[str]:
 
 
 @app.put("/tasks/add_task")
-async def add_task_endpoint(text: str, task_type: TaskTypes) -> Dict[str, str]:
+async def add_task_endpoint(params: Union[TrainModel, PredictModel], task_type: TaskTypes) -> Dict[str, str]:
     if task_type in TaskTypes:
-        return await add_task({"text": text}, task_type)
+        return await add_task(params.model_dump(), task_type)
     else:
         raise Exception("No valid task type.")
 
 
 @app.get("/tasks/get_task")
-async def get_task_endpoint(task_id: str) -> Dict[str, Union[str, int, Dict[str, Union[int, float]]]]:
+async def get_task_endpoint(task_id: str) -> Dict[str, Any]:
     return await get_task(task_id)
 
 

@@ -1,7 +1,7 @@
-from typing import Union, Dict, List, Any
+from typing import Dict, List, Any
 
 from celery.result import AsyncResult
-from src.tasks import task_executors, TaskTypes
+from src.celery_example.tasks import task_executors, TaskTypes
 
 all_tasks = dict()
 
@@ -21,7 +21,7 @@ async def add_task(params: Dict[str, Any], task_type: TaskTypes) -> Dict[str, st
     return {"task_id": task_id, "task_state": task_state}
 
 
-async def get_task(task_id: str) -> Dict[str, Union[str, int, Dict[str, Union[int, float]]]]:
+async def get_task(task_id: str) -> Dict[str, Any]:
     task_result = AsyncResult(task_id)
     task_state = task_result.status
     all_tasks[task_id] = {"state": task_state}

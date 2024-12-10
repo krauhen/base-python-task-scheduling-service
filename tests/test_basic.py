@@ -3,7 +3,7 @@ import time
 import numpy as np
 import requests
 
-from celery_example.models import TrainModel, PredictModel
+from celery_example.models.tasks import TrainModel, PredictModel
 
 
 def test_base():

@@ -1,7 +1,7 @@
 from typing import Dict, List, Any
 
 from celery.result import AsyncResult
-from src.celery_example.tasks import task_executors, TaskTypes
+from src.celery_example.lib.tasks import task_executors, TaskTypes
 
 all_tasks = dict()
 

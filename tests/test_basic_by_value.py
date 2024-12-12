@@ -6,7 +6,7 @@ import requests
 from celery_example.models.tasks import TrainModel, PredictModel
 
 
-def test_base():
+def test_basic_by_value():
     print()
     print()
     print("Fit Model...")
@@ -25,7 +25,7 @@ def test_base():
         task_id = response["task_id"]
         print(f"task_id: {task_id}")
     else:
-        return
+        return False
     print("...done!")
     print()
 
@@ -50,7 +50,7 @@ def test_base():
         model_ref = response["result"]["model_ref"]
         print(f"model_ref: {model_ref}")
     else:
-        return
+        return False
     print("...done!")
     print()
 
@@ -70,7 +70,7 @@ def test_base():
         task_id = response["task_id"]
         print(f"task_id: {task_id}")
     else:
-        return
+        return False
     print("...done!")
     print()
 
@@ -95,7 +95,7 @@ def test_base():
         y = response["result"]["y"]
         print(f"y: {y}")
     else:
-        return
+        return False
     print("...done!")
     print()
 

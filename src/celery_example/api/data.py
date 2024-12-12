@@ -2,11 +2,11 @@ from typing import List, Any
 
 from fastapi import APIRouter, UploadFile, File, Form
 
-from celery_example.lib.data import (add_data_from_file,
-                                     add_data_from_values,
-                                     get_data_ref,
-                                     get_data_refs, remove_data,
-                                     update_data)
+from celery_example.util.data import (add_data_from_file,
+                                      add_data_from_values,
+                                      get_data_ref,
+                                      get_data_refs, remove_data,
+                                      update_data)
 
 router = APIRouter()
 
